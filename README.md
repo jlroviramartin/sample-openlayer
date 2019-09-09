@@ -1,6 +1,6 @@
 # sample-openlayers
 
-OpenLayer + Tomcat + Jersey + Guice
+OpenLayers + Tomcat + Jersey + Guice
 
 ##Crear un war
 
