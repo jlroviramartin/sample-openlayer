@@ -13,18 +13,18 @@ import javax.servlet.annotation.WebInitParam;
 @Documented
 public @interface GuiceWebFilter {
 
-	/**
-	 * The URL patterns of the servlet
-	 */
-	String[] value() default {};
+    /**
+     * The URL patterns of the servlet
+     */
+    String[] value() default {};
 
-	/**
-	 * The URL patterns of the servlet
-	 */
-	String[] urlPatterns() default {};
+    /**
+     * The URL patterns of the servlet
+     */
+    String[] urlPatterns() default {};
 
-	/**
-	 * The init parameters of the servlet
-	 */
-	WebInitParam[] initParams() default {};
+    /**
+     * The init parameters of the servlet
+     */
+    WebInitParam[] initParams() default {};
 }

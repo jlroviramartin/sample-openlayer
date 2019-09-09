@@ -10,8 +10,8 @@ import javax.ws.rs.ext.Provider;
 //@Provider
 public class MyResponseFilter implements ContainerResponseFilter {
 
-	@Override
-	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
-		System.out.println("ResponseFilter");
-	}
+    @Override
+    public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
+        System.out.println("ResponseFilter");
+    }
 }

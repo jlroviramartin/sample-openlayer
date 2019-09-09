@@ -14,6 +14,6 @@ import static java.lang.annotation.ElementType.METHOD;
 @Scope
 @Proxiable
 @Retention(RUNTIME)
-@Target( { TYPE, METHOD })
+@Target({ TYPE, METHOD })
 public @interface RequestScope {
 }

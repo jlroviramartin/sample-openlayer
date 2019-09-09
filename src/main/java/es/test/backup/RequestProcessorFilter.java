@@ -18,24 +18,24 @@ public class RequestProcessorFilter implements Filter {
     private RequestContext requestContext;
 
     @Override
-	public void init(FilterConfig config) throws ServletException {
-	}
+    public void init(FilterConfig config) throws ServletException {
+    }
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
-			throws IOException, ServletException {
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
+            throws IOException, ServletException {
 
-		System.out.println("Begin doFilter");
-		//requestContext.startRequest();
-		try {
-			filterChain.doFilter(request, response);
-		} finally {
-			//requestContext.stopRequest();
-			System.out.println("End doFilter");
-		}
-	}
+        System.out.println("Begin doFilter");
+        //requestContext.startRequest();
+        try {
+            filterChain.doFilter(request, response);
+        } finally {
+            //requestContext.stopRequest();
+            System.out.println("End doFilter");
+        }
+    }
 
-	@Override
-	public void destroy() {
-	}
+    @Override
+    public void destroy() {
+    }
 }

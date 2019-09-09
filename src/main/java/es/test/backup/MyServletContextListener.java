@@ -9,13 +9,13 @@ import javax.servlet.annotation.WebListener;
 //@WebListener
 public class MyServletContextListener implements ServletContextListener {
 
-	@Override
-	public void contextInitialized(ServletContextEvent sce) {
-		ServletContext context = sce.getServletContext();
-		context.addServlet("MyServlet", new HelloWorldServlet("Everyone")).addMapping("/MyServlet");
-	}
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        ServletContext context = sce.getServletContext();
+        context.addServlet("MyServlet", new HelloWorldServlet("Everyone")).addMapping("/MyServlet");
+    }
 
-	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
-	}
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+    }
 }

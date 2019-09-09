@@ -9,19 +9,19 @@ import java.io.IOException;
 
 //@WebServlet(name = "MyServlet", urlPatterns = {"/MyServlet"})
 public class HelloWorldServlet extends HttpServlet {
-	private final String name;
+    private final String name;
 
-	public HelloWorldServlet() {
-		this("DEFAULT");
-	}
+    public HelloWorldServlet() {
+        this("DEFAULT");
+    }
 
-	public HelloWorldServlet(String name) {
-		this.name = name;
-	}
+    public HelloWorldServlet(String name) {
+        this.name = name;
+    }
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/plain");
-		resp.getWriter().println("Hello, " + name + "!");
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain");
+        resp.getWriter().println("Hello, " + name + "!");
+    }
 }

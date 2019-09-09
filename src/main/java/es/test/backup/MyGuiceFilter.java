@@ -13,18 +13,18 @@ import com.google.inject.servlet.GuiceFilter;
 //@WebFilter("/*")
 public class MyGuiceFilter extends GuiceFilter {
 
-	public MyGuiceFilter() {
-	}
+    public MyGuiceFilter() {
+    }
 
-	@Override
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-			throws IOException, ServletException {
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
 
-		System.out.println("Begin GuiceFilter");
-		try {
-			super.doFilter(servletRequest, servletResponse, filterChain);
-		} finally {
-			System.out.println("End GuiceFilter");
-		}
-	}
+        System.out.println("Begin GuiceFilter");
+        try {
+            super.doFilter(servletRequest, servletResponse, filterChain);
+        } finally {
+            System.out.println("End GuiceFilter");
+        }
+    }
 }

@@ -13,43 +13,43 @@ import com.google.inject.servlet.ServletScopes;
 
 public abstract class RunInjection {
 
-	private Injector injector;
+    private Injector injector;
 
-	public Injector getInjector() {
-		if (injector == null) {
-			injector = buildInjector();
-		}
-		return injector;
-	}
+    public Injector getInjector() {
+        if (injector == null) {
+            injector = buildInjector();
+        }
+        return injector;
+    }
 
-	protected abstract Module[] getModules();
+    protected abstract Module[] getModules();
 
-	protected Injector buildInjector() {
-		return Guice.createInjector(getModules());
-	}
+    protected Injector buildInjector() {
+        return Guice.createInjector(getModules());
+    }
 
-	protected void beforeScope() {
-	}
+    protected void beforeScope() {
+    }
 
-	protected void afterScope() {
-	}
+    protected void afterScope() {
+    }
 
-	public void runInRequest(Consumer<Injector> consumer) {
-		getInjector();
+    public void runInRequest(Consumer<Injector> consumer) {
+        getInjector();
 
-		Map<Key<?>, Object> seedMap = new HashMap<>();
-		RequestScoper requestScoper = ServletScopes.scopeRequest(seedMap);
-		try (CloseableScope scope = requestScoper.open()) {
-			RequestLifecycle requestLifecycle = getInjector().getInstance(RequestLifecycle.class);
+        Map<Key<?>, Object> seedMap = new HashMap<>();
+        RequestScoper requestScoper = ServletScopes.scopeRequest(seedMap);
+        try (CloseableScope scope = requestScoper.open()) {
+            RequestLifecycle requestLifecycle = getInjector().getInstance(RequestLifecycle.class);
 
-			requestLifecycle.beginLifecycle();
-			try {
-				beforeScope();
-				consumer.accept(getInjector());
-				afterScope();
-			} finally {
-				requestLifecycle.endLifecycle();
-			}
-		}
-	}
+            requestLifecycle.beginLifecycle();
+            try {
+                beforeScope();
+                consumer.accept(getInjector());
+                afterScope();
+            } finally {
+                requestLifecycle.endLifecycle();
+            }
+        }
+    }
 }

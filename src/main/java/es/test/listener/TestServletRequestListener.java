@@ -14,6 +14,6 @@ public class TestServletRequestListener implements ServletRequestListener {
 
     @Override
     public void requestDestroyed(ServletRequestEvent event) {
-    	System.out.println("ServletRequest requestDestroyed, request by: " + event.getServletRequest().getRemoteAddr());
+        System.out.println("ServletRequest requestDestroyed, request by: " + event.getServletRequest().getRemoteAddr());
     }
 }

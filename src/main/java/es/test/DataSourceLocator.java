@@ -4,5 +4,5 @@ import javax.sql.DataSource;
 
 public interface DataSourceLocator {
 
-	DataSource getDataSource() throws Exception;
+    DataSource getDataSource() throws Exception;
 }

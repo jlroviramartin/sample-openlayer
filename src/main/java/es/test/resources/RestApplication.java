@@ -9,26 +9,26 @@ import es.test.json.ObjectMapperProvider;
 @ApplicationPath("/rest")
 public class RestApplication extends ResourceConfig {
 
-	public RestApplication() {
-		configResources();
-	}
+    public RestApplication() {
+        configResources();
+    }
 
-	private void configResources() {
+    private void configResources() {
 
-		System.out.println("***** RestApplication: configResources");
+        System.out.println("***** RestApplication: configResources");
 
-		// json mapping
-		register(ObjectMapperProvider.class);
-		register(JacksonFeature.class);
+        // json mapping
+        register(ObjectMapperProvider.class);
+        register(JacksonFeature.class);
 
-		// Resources REST
-		register(TestResource.class);
-		register(MapResource.class);
+        // Resources REST
+        register(TestResource.class);
+        register(MapResource.class);
 
-		// Providers
-		register(CORSFilter.class);
+        // Providers
+        register(CorsFilter.class);
 
-		// Listeners
-		register(GuiceBridgeLifecycleListener.class);
-	}
+        // Listeners
+        register(GuiceBridgeLifecycleListener.class);
+    }
 }

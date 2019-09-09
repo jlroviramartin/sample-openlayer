@@ -1,14 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>es.test</groupId>
-	<artifactId>webapp</artifactId>
-	<packaging>war</packaging>
+	<artifactId>sample-openlayers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>webapp Maven Webapp</name>
+	<name>sample-openlayers Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
+	<packaging>war</packaging>
 
 	<parent>
 		<groupId>es.test</groupId>
@@ -17,7 +19,14 @@
 		<relativePath>parent/pom.xml</relativePath>
 	</parent>
 
-	<properties></properties>
+    <scm>
+        <connection>scm:git:https://github.com/jlroviramartin/sample-openlayers.git</connection>
+        <developerConnection>scm:git:https://jlroviramartin@github.com/jlroviramartin/sample-openlayers.git</developerConnection>
+        <url>https://github.com/jlroviramartin/sample-openlayers</url>
+    </scm>
+
+	<properties>
+	</properties>
 
 	<dependencies>
 		<!-- Jersey -->
@@ -157,7 +166,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>webapp</finalName>
+		<finalName>sample-openlayer</finalName>
 
 		<plugins>
 
@@ -166,14 +175,14 @@
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>add-test-source</id>
+						<id>add-integration-test-source</id>
 						<phase>process-resources</phase>
 						<goals>
 							<goal>add-test-source</goal>
 						</goals>
 						<configuration>
 							<sources>
-								<source>src/it/java</source>
+								<source>src/integration-test/java</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -232,8 +241,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
+					<!-- Directorio base: src/main/webapp/ -->
 					<packagingExcludes>
-						<!-- src/main/webapp/ -->
 						node_modules/,
 						.cache/,
 						dist/,
@@ -241,6 +250,88 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+			</plugin>
+
 		</plugins>
 	</build>
+
+    <reporting>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <configuration>
+                    <webAccessUrl>https://github.com/jlroviramartin/sample-jpa</webAccessUrl>
+                    <anonymousConnection>scm:git:https://github.com/jlroviramartin/sample-jpa.git</anonymousConnection>
+                    <developerConnection>scm:git:https://jlroviramartin@github.com/jlroviramartin/sample-jpa.git</developerConnection>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>summary</report>
+
+                            <report>ci-management</report>
+
+                            <report>dependency-management</report>
+
+                            <report>plugins</report>
+                            <report>plugin-management</report>
+
+                            <report>issue-management</report>
+
+                            <report>licenses</report>
+
+                            <report>mailing-lists</report>
+                            <report>scm</report>
+                            <report>team</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+        </plugins>
+    </reporting>
+
 </project>

@@ -4,16 +4,16 @@ import javax.sql.DataSource;
 
 public class OtherDataSourceLocator implements DataSourceLocator {
 
-	private DataSource dataSource;
+    private DataSource dataSource;
 
-	public OtherDataSourceLocator() {
-	}
+    public OtherDataSourceLocator() {
+    }
 
-	@Override
-	public DataSource getDataSource() throws Exception {
-		if (dataSource == null) {
-			dataSource = null;
-		}
-		return null;
-	}
+    @Override
+    public DataSource getDataSource() throws Exception {
+        if (dataSource == null) {
+            dataSource = null;
+        }
+        return null;
+    }
 }

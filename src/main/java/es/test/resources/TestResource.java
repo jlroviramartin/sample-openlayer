@@ -9,16 +9,16 @@ import es.test.DataSourceLocator;
 @Path("/testresource")
 public class TestResource {
 
-	// @Inject
-	private DataSourceLocator dataSourceLocator;
+    // @Inject
+    private DataSourceLocator dataSourceLocator;
 
-	@Inject
-	public TestResource(DataSourceLocator dataSourceLocator) {
-		this.dataSourceLocator = dataSourceLocator;
-	}
+    @Inject
+    public TestResource(DataSourceLocator dataSourceLocator) {
+        this.dataSourceLocator = dataSourceLocator;
+    }
 
-	@GET
-	public String getHello() {
-		return "Hello " + dataSourceLocator + "!";
-	}
+    @GET
+    public String getHello() {
+        return "Hello " + dataSourceLocator + "!";
+    }
 }

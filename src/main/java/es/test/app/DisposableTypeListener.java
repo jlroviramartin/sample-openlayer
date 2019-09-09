@@ -8,25 +8,25 @@ import com.google.inject.spi.TypeListener;
 
 public class DisposableTypeListener implements TypeListener {
 
-	private final Provider<RequestLifecycle> requestLifecycleProvider;
+    private final Provider<RequestLifecycle> requestLifecycleProvider;
 
-	public DisposableTypeListener(Provider<RequestLifecycle> requestLifecycleProvider) {
-		this.requestLifecycleProvider = requestLifecycleProvider;
-	}
+    public DisposableTypeListener(Provider<RequestLifecycle> requestLifecycleProvider) {
+        this.requestLifecycleProvider = requestLifecycleProvider;
+    }
 
-	@Override
-	public <I> void hear(final TypeLiteral<I> typeLiteral, TypeEncounter<I> typeEncounter) {
+    @Override
+    public <I> void hear(final TypeLiteral<I> typeLiteral, TypeEncounter<I> typeEncounter) {
 
-		typeEncounter.register(new InjectionListener<I>() {
-			@Override
-			public void afterInjection(I injectee) {
-				System.out.println("*** afterInjection ***");
+        typeEncounter.register(new InjectionListener<I>() {
+            @Override
+            public void afterInjection(I injectee) {
+                System.out.println("*** afterInjection ***");
 
-				if (injectee instanceof Disposable) {
-					RequestLifecycle requestLifecycle = requestLifecycleProvider.get();
-					requestLifecycle.track((Disposable) injectee);
-				}
-			}
-		});
-	}
+                if (injectee instanceof Disposable) {
+                    RequestLifecycle requestLifecycle = requestLifecycleProvider.get();
+                    requestLifecycle.track((Disposable) injectee);
+                }
+            }
+        });
+    }
 }

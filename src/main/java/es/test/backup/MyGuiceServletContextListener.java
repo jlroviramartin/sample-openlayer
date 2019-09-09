@@ -16,21 +16,21 @@ import com.google.inject.servlet.ServletModule;
 //@WebListener
 public class MyGuiceServletContextListener extends GuiceServletContextListener {
 
-	@Override
-	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		super.contextInitialized(servletContextEvent);
-	}
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        super.contextInitialized(servletContextEvent);
+    }
 
-	@Override
-	protected Injector getInjector() {
-		return Guice.createInjector(/*new HK2IntoGuiceBridge(MyApplication.getServiceLocator()),*/ new ServletModule() {
+    @Override
+    protected Injector getInjector() {
+        return Guice.createInjector(/*new HK2IntoGuiceBridge(MyApplication.getServiceLocator()),*/ new ServletModule() {
 
-			@Override
-			protected void configureServlets() {
-				// serve("*.html").with(MyServlet.class);
-				// filter("/*").through(MyFilter.class);
-				super.configureServlets();
-			}
-		}, new MyModule());
-	}
+            @Override
+            protected void configureServlets() {
+                // serve("*.html").with(MyServlet.class);
+                // filter("/*").through(MyFilter.class);
+                super.configureServlets();
+            }
+        }, new MyModule());
+    }
 }

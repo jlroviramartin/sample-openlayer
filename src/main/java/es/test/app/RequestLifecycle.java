@@ -2,13 +2,13 @@ package es.test.app;
 
 public interface RequestLifecycle {
 
-	void beginLifecycle();
+    void beginLifecycle();
 
-	void endLifecycle();
+    void endLifecycle();
 
-	void track(Disposable disposable);
+    void track(Disposable disposable);
 
-	void addLifecycleListener(RequestLifecycleListener listener);
+    void addLifecycleListener(RequestLifecycleListener listener);
 
-	void removeLifecycleListener(RequestLifecycleListener listener);
+    void removeLifecycleListener(RequestLifecycleListener listener);
 }
